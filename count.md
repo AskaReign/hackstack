@@ -1,4 +1,5 @@
 # Counting things in your project
+## How many lines of code do i have in general?
 ### Windows
 - Open PowerShell in your project directory and add the below command.
 - Why powershell and not cmd? because it has many features that makes it easier to count LOC.
