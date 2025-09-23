@@ -1,2 +1,2 @@
 # hackstack
-Your go-to stack of little tips and tools for an easier tech life!
+Your go-to stack of little tips and tools for an easier geeky life!
