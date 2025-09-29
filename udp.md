@@ -1,3 +1,8 @@
+# Sending UDP Packets with Python: A Practical Guide
+
+---
+
+
 ```py
 # Send data via udp
 
@@ -14,3 +19,4 @@ sock.sendto(message, (UDP_IP, UDP_PORT))  # Send the UDP packet
 
 print(f"Sent message to {UDP_IP}:{UDP_PORT}")
 ```
+
