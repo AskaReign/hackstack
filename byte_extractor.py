@@ -1,23 +1,20 @@
-def extract_hex_bytes_to_text(input_file, output_file):
+import re
+
+def extract_hex_bytes_to_text_strict(input_file, output_file):
+    # Regex for matching lines starting exactly with a 4-digit hex offset followed by space
+    # e.g. '0000 ' or '00a0 '
+    offset_pattern = re.compile(r'^[0-9a-fA-F]{4}\s')
+
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
         for line in infile:
-            line = line.strip()
-            if not line:
-                continue
+            if offset_pattern.match(line):
+                parts = line.strip().split()
+                hex_bytes = parts[1:17]
+                hex_line = ' '.join(hex_bytes)
+                outfile.write(hex_line + '\n')
+            # else: skip lines that do not start with hex offset
 
-            # Split line into parts
-            parts = line.split()
-
-            # Skip the first part (line number / offset)
-            hex_bytes = parts[1:17]  # max 16 bytes per line
-
-            # Join hex bytes into a line
-            hex_line = ' '.join(hex_bytes)
-
-            # Write to output
-            outfile.write(hex_line + '\n')
-
-    print(f"✅ Hex bytes extracted to '{output_file}'")
+    print(f"✅ Strict filtered hex bytes extracted to '{output_file}'")
 
 # Example usage
-extract_hex_bytes_to_text('input.txt', 'output.txt')
+extract_hex_bytes_to_text_strict('simulation_test.txt', 'output.txt')
